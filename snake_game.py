@@ -143,3 +143,30 @@ while True:
         y = head.ycor()
         segments[0].goto(x,y)
     move()
+    
+    #check for head collision with body
+    for segment in segments:
+        if segment.distance(head) < 20:
+            time.sleep(1)
+            head.goto(0,0)
+            head.direction = 'stop'
+
+            #hide the segments
+            for segment in segments:
+                segment.goto(1000,1000)
+
+            #clear the segments
+            segments.clear()
+
+            #reset the score
+            score = 0
+            
+            #reset the delay
+            delay = 0.1
+
+            #update the score display
+            pen.clear()
+            pen.write(f'Score: {score} High Score: {high_score}',align='center',font=('Courier',24,'normal'))
+    time.sleep(delay)
+
+win.mainloop()
