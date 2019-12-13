@@ -1,4 +1,7 @@
 import turtle
+import time
+
+delay = 0.1
 
 #setting up the screen
 win = turtle.Screen()
@@ -31,8 +34,31 @@ def move():
         x = head.xcor()
         head.setx(x-20)
 
+#movement logic
+def go_up():
+    if head.direction is not 'down':
+        head.direction = 'up'
+def go_down():
+    if head.direction is not 'up':
+        head.direction = 'down'
+def go_right():
+    if head.direction is not 'left':
+        head.direction = 'right'
+def go_left():
+    if head.direction is not 'right':
+        head.direction = 'left'
+
+#keyboard bindings
+win.listen()
+win.onkeypress(go_up,'w')
+win.onkeypress(go_down,'s')
+win.onkeypress(go_right,'d')
+win.onkeypress(go_left,'a')
+
 
 #main game loop 
 while True:
     win.update()
     move()
+    time.sleep(delay)
+
