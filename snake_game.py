@@ -1,6 +1,6 @@
 import turtle
 import time
-
+import random
 delay = 0.1
 
 #setting up the screen
@@ -18,6 +18,15 @@ head.color('white')
 head.penup()
 head.goto(0,0)
 head.direction = 'stop'
+
+#Snake food
+food = turtle.Turtle()
+food.speed(0)
+food.shape('circle')
+food.color('red')
+food.penup()
+food.shapesize(0.5,0.5)
+food.goto(50,50)
 
 #function to move snake
 def move():
@@ -61,4 +70,5 @@ while True:
     win.update()
     move()
     time.sleep(delay)
+
 
